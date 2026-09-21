@@ -15,21 +15,21 @@
     }
 
     body {
-      background: #f5f6fa;
-      color: #171717;
+      background: #f5f7fb;
+      color: #111827;
     }
 
     header {
-      background: #ffffff;
-      padding: 18px 16px;
+      background: white;
+      padding: 18px 20px;
+      border-bottom: 1px solid #e5e7eb;
       position: sticky;
       top: 0;
       z-index: 10;
-      border-bottom: 1px solid #e5e5e5;
     }
 
     .logo {
-      font-size: 24px;
+      font-size: 25px;
       font-weight: 800;
     }
 
@@ -38,7 +38,7 @@
     }
 
     .hero {
-      padding: 35px 18px 25px;
+      padding: 35px 20px 28px;
       background: linear-gradient(135deg, #2563eb, #4f46e5);
       color: white;
     }
@@ -51,43 +51,45 @@
 
     .hero p {
       font-size: 15px;
-      opacity: 0.9;
+      line-height: 1.5;
       margin-bottom: 22px;
+      opacity: .92;
     }
 
-    .search-box {
+    .search {
       background: white;
-      padding: 8px;
+      padding: 7px;
       border-radius: 14px;
       display: flex;
-      gap: 8px;
+      gap: 7px;
     }
 
-    .search-box input {
-      width: 100%;
-      border: none;
-      outline: none;
-      padding: 12px;
+    .search input {
+      flex: 1;
+      min-width: 0;
+      border: 0;
+      outline: 0;
+      padding: 13px;
       font-size: 15px;
     }
 
-    .search-box button {
-      border: none;
+    .search button {
+      border: 0;
       background: #2563eb;
       color: white;
       padding: 0 18px;
       border-radius: 10px;
-      font-weight: bold;
+      font-weight: 700;
     }
 
     .section {
-      padding: 24px 16px;
+      padding: 25px 18px;
     }
 
-    .section-title {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 15px;
+    .title {
+      font-size: 21px;
+      font-weight: 800;
+      margin-bottom: 16px;
     }
 
     .categories {
@@ -98,178 +100,345 @@
 
     .category {
       background: white;
-      padding: 18px;
-      border-radius: 14px;
-      text-align: center;
       border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 20px 10px;
+      text-align: center;
+      cursor: pointer;
     }
 
-    .category .icon {
-      font-size: 28px;
-      margin-bottom: 8px;
+    .category:active {
+      transform: scale(.98);
+    }
+
+    .icon {
+      font-size: 30px;
+      margin-bottom: 9px;
     }
 
     .category h3 {
-      font-size: 15px;
+      font-size: 16px;
+      margin-bottom: 5px;
     }
 
     .category p {
-      color: #777;
+      color: #6b7280;
       font-size: 12px;
-      margin-top: 4px;
     }
 
-    .role-box {
+    .role-container {
       background: white;
-      border-radius: 16px;
-      padding: 20px;
       border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      overflow: hidden;
     }
 
     .role {
       display: flex;
       align-items: center;
-      gap: 14px;
-      padding: 15px 0;
+      gap: 15px;
+      padding: 19px;
+      cursor: pointer;
+      border-bottom: 1px solid #eee;
+    }
+
+    .role:last-child {
+      border-bottom: 0;
+    }
+
+    .role:active {
+      background: #f3f4f6;
     }
 
     .role-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      background: #eef2ff;
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: #eff6ff;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
+      font-size: 27px;
+      flex-shrink: 0;
     }
 
     .role h3 {
-      font-size: 16px;
+      font-size: 17px;
+      margin-bottom: 5px;
     }
 
     .role p {
+      color: #6b7280;
       font-size: 13px;
-      color: #777;
-      margin-top: 3px;
+      line-height: 1.4;
     }
 
     footer {
+      background: #111827;
+      color: #9ca3af;
       text-align: center;
       padding: 25px 15px;
-      background: #111827;
-      color: #aaa;
       font-size: 13px;
-      margin-top: 20px;
     }
 
     footer strong {
       color: white;
+    }
+
+    /* Login choice popup */
+
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      z-index: 100;
+      align-items: flex-end;
+    }
+
+    .overlay.show {
+      display: flex;
+    }
+
+    .popup {
+      background: white;
+      width: 100%;
+      border-radius: 24px 24px 0 0;
+      padding: 24px 20px 30px;
+      animation: slideUp .25s ease;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(100%);
+      }
+      to {
+        transform: translateY(0);
+      }
+    }
+
+    .popup-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .popup-top h2 {
+      font-size: 21px;
+    }
+
+    .close {
+      border: 0;
+      background: #f3f4f6;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 20px;
+    }
+
+    .login-btn {
+      width: 100%;
+      border: 0;
+      padding: 16px;
+      border-radius: 13px;
+      margin-top: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      background: #2563eb;
+      color: white;
+    }
+
+    .login-btn.owner {
+      background: #111827;
     }
   </style>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo">
-      Ballari <span>Rent</span>
+<header>
+  <div class="logo">Ballari <span>Rent</span></div>
+</header>
+
+<section class="hero">
+
+  <h1>Find Your Perfect Place in Ballari</h1>
+
+  <p>
+    Find houses, flats, rooms, PGs and shops available for rent.
+  </p>
+
+  <div class="search">
+    <input
+      id="searchInput"
+      type="text"
+      placeholder="Search area or property..."
+    >
+
+    <button onclick="searchProperty()">Search</button>
+  </div>
+
+</section>
+
+<section class="section">
+
+  <div class="title">What are you looking for?</div>
+
+  <div class="categories">
+
+    <div class="category" onclick="selectProperty('House')">
+      <div class="icon">🏠</div>
+      <h3>House</h3>
+      <p>Houses for rent</p>
     </div>
-  </header>
 
-  <section class="hero">
+    <div class="category" onclick="selectProperty('Flat')">
+      <div class="icon">🏢</div>
+      <h3>Flat</h3>
+      <p>1BHK • 2BHK • 3BHK</p>
+    </div>
 
-    <h1>Find Your Perfect Place in Ballari</h1>
+    <div class="category" onclick="selectProperty('Room')">
+      <div class="icon">🛏️</div>
+      <h3>Room / PG</h3>
+      <p>Rooms and PG</p>
+    </div>
 
-    <p>
-      Find houses, flats, rooms and shops for rent in your preferred area.
+    <div class="category" onclick="selectProperty('Shop')">
+      <div class="icon">🏪</div>
+      <h3>Shop</h3>
+      <p>Commercial properties</p>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="section">
+
+  <div class="title">Join Ballari Rent</div>
+
+  <div class="role-container">
+
+    <div class="role" onclick="openLogin('Customer')">
+
+      <div class="role-icon">👤</div>
+
+      <div>
+        <h3>I'm a Customer</h3>
+        <p>Find properties available for rent.</p>
+      </div>
+
+    </div>
+
+    <div class="role" onclick="openLogin('Owner')">
+
+      <div class="role-icon">🏠</div>
+
+      <div>
+        <h3>I'm an Owner</h3>
+        <p>List your property and find tenants.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+  © 2026 <strong>Ballari Rent</strong><br>
+  Find • Rent • Move
+</footer>
+
+
+<!-- LOGIN CHOICE POPUP -->
+
+<div class="overlay" id="loginPopup">
+
+  <div class="popup">
+
+    <div class="popup-top">
+      <h2 id="popupTitle">Login</h2>
+      <button class="close" onclick="closeLogin()">×</button>
+    </div>
+
+    <p id="popupText">
+      Continue as Customer
     </p>
 
-    <div class="search-box">
-      <input
-        type="text"
-        placeholder="Search area or property..."
-      >
+    <button class="login-btn" onclick="continueLogin()">
+      Continue
+    </button>
 
-      <button>Search</button>
-    </div>
+  </div>
 
-  </section>
+</div>
 
-  <section class="section">
 
-    <div class="section-title">
-      What are you looking for?
-    </div>
+<script>
 
-    <div class="categories">
+  let selectedRole = "";
 
-      <div class="category">
-        <div class="icon">🏠</div>
-        <h3>House</h3>
-        <p>Houses for rent</p>
-      </div>
+  function openLogin(role) {
 
-      <div class="category">
-        <div class="icon">🏢</div>
-        <h3>Flat</h3>
-        <p>1BHK • 2BHK • 3BHK</p>
-      </div>
+    selectedRole = role;
 
-      <div class="category">
-        <div class="icon">🛏️</div>
-        <h3>Room / PG</h3>
-        <p>Rooms & PG</p>
-      </div>
+    document.getElementById("popupTitle").innerText =
+      role + " Login";
 
-      <div class="category">
-        <div class="icon">🏪</div>
-        <h3>Shop</h3>
-        <p>Commercial properties</p>
-      </div>
+    document.getElementById("popupText").innerText =
+      "You selected " + role + ". Continue to login.";
 
-    </div>
+    document.getElementById("loginPopup")
+      .classList.add("show");
+  }
 
-  </section>
+  function closeLogin() {
 
-  <section class="section">
+    document.getElementById("loginPopup")
+      .classList.remove("show");
+  }
 
-    <div class="section-title">
-      Join Ballari Rent
-    </div>
+  function continueLogin() {
 
-    <div class="role-box">
+    alert(
+      selectedRole +
+      " login system will be connected in the next step."
+    );
 
-      <div class="role">
+    closeLogin();
+  }
 
-        <div class="role-icon">👤</div>
+  function selectProperty(type) {
 
-        <div>
-          <h3>I'm a Customer</h3>
-          <p>Find houses, flats, rooms and shops.</p>
-        </div>
+    alert(
+      type +
+      " search will be connected when our property database is added."
+    );
 
-      </div>
+  }
 
-      <div class="role">
+  function searchProperty() {
 
-        <div class="role-icon">🏠</div>
+    const value =
+      document.getElementById("searchInput").value.trim();
 
-        <div>
-          <h3>I'm an Owner</h3>
-          <p>List your property and find tenants.</p>
-        </div>
+    if (!value) {
 
-      </div>
+      alert("Please enter an area or property type.");
 
-    </div>
+      return;
+    }
 
-  </section>
+    alert(
+      "Searching for: " + value
+    );
 
-  <footer>
-    © 2026 <strong>Ballari Rent</strong><br>
-    Find • Rent • Move
-  </footer>
+  }
+
+</script>
 
 </body>
 </html>
